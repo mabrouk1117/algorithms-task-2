@@ -37,10 +37,11 @@ int sort_mid ( int array[],int first,int last){
 	return j;
 
 }
+//n*log(n) 
 void quick_sort(int array[],int first ,int last ){
 	int i=first;
 	int u;
-	u=sort_mid (array,first,last);
+	u=sort_mid (array,first,last); 
 	//print(array, last);
 	//printf("\n \n \n");
 	if(i<last){
@@ -49,7 +50,7 @@ void quick_sort(int array[],int first ,int last ){
 	}
 		
 }	
-
+//n^2
 void insertion_sort(int array[],int size){
 	int i;
 	int key ;
@@ -63,9 +64,8 @@ void insertion_sort(int array[],int size){
 		}
 		array[j+1]=key;
 	}
-	printf("the array is sorted using insertion sort in %u seconds \n" ,clock());
 }
-		
+
 int main(){
 	int size=100000;
 	int x;
@@ -73,12 +73,19 @@ int main(){
 	int number [size];
 	for (x=0;x<100000;x++)
 		number [x]=rand() % 50  + 1 ;
+	float start_t =clock() ;
 	quick_sort (number,first,size);
-	printf("the array is sorted using quick sort in %u seconds \n" ,clock());
-	//print (number ,size) ;
-	printf("\n \n \n") ;
-
-	insertion_sort(number,size) ;
+	float end_t =clock() ;
+	float total_t =(double) (end_t -start_t ) /CLOCKS_PER_SEC ;
+	printf("total time to sort by quicksort is  %f \n",total_t) ;
+	
+	
+	end_t =clock() ;
+	insertion_sort(number,size) ;	
+	printf(" \n \n \n");
+	float endd_t =clock() ;
+	float totall_t =(double) (endd_t -end_t ) /CLOCKS_PER_SEC ;
+	printf("total time to sort by insertion sort is  %f \n",totall_t) ;
 	//print (number ,size) ;
 	
 	return 0;
